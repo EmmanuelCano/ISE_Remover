@@ -8,7 +8,7 @@ import csv
 
 
 # Add Global Variables
-ISE_IPAddress="10.122.112.59"
+ISE_IPAddress="10.10.10.10"
 urldevices = "https://"+ISE_IPAddress+":9060/ers/config/networkdevice"
 urlusers="https://"+ISE_IPAddress+":9060/ers/config/internaluser"
 based64credentails= "Basic ZWNhbm9ndXQxOkNpc2NvMTIz"
