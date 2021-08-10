@@ -5,6 +5,9 @@ import json
 import sys
 import csv
 
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
 # Add Global Variables
