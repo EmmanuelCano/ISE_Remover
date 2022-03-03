@@ -43,7 +43,7 @@ cd ISE_Remover
 In order to run the script issue the following command:
 
 ```
-Python3 ISE_Remover.py
+python3 ISERemover.py
 
 ```
 
