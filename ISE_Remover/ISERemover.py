@@ -4,6 +4,7 @@ import requests
 import json
 import sys
 import csv
+import os
 
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
@@ -14,7 +15,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 ISE_IPAddress="10.10.10.10"
 urldevices = "https://"+ISE_IPAddress+":9060/ers/config/networkdevice"
 urlusers="https://"+ISE_IPAddress+":9060/ers/config/internaluser"
-based64credentails= "Basic ZWNhbm9ndXQxOkNpc2NvMTIz"
+based64credentails= "Basic ZXJzYWRtaW46Q2lzY28xMjM="
 
 
 def get_devices():
@@ -58,23 +59,27 @@ if __name__ == '__main__':
     users=get_users()
 
     print('Welcome to ISE Remover!, WARNING: This script uses CSV file to perform action 4 and 6. Network Access Devices are based on names.\nPlease select one option for Network Access Device or Users:')
-    Option= int(input(" 1. Print all Network Access Devices \n 2. Save the result in a txt file \n 3. Get the info from File \n 4. Remove the Network Access Devices from CSV File  \n 5. Print all internal Users \n 6. Remove all internal Users from CSV file \n 7. Exit \nType the option: "))
+    Option= int(input(" 1. Print all Network Access Devices \n 2. Save the NADs information in a txt file \n 3. Get the info from File \n 4. Remove the Network Access Devices from CSV File  \n 5. Print all internal Users \n 6. Remove all internal Users from CSV file \n 7. Exit \nType the option: "))
 
     if Option == 1:
-
+        print(devices)
         print(devices.text)
 
     elif Option == 2:
 
         original_stdout = sys.stdout
-        filename=str(input('Define a name for the file: '))
-        with open(filename+'.txt', 'w') as f:
+        filename=str(input('Define a name for the file WITHOUT extension: '))
+        location=str(input ('location to the file (i.e /home/user/Desktop): '))
+        completeName = os.path.join(location, filename)
+        
+        with open(completeName+'.txt', 'w') as f:
          sys.stdout = f
          print(devices.text)
          sys.stdout = original_stdout
 
     elif Option == 3:
-        samplefile = open('Devices.txt')
+        filename=str(input('Name of the TXT file (i.e users?): '))
+        samplefile = open(filename+'.txt')
         samplereader = csv.reader(samplefile)
         sampledata = list(samplereader)
 
@@ -82,7 +87,7 @@ if __name__ == '__main__':
            print(x[0])
 
     elif Option == 4:
-         Filename=input(str("¿What is the filename?: "))
+         Filename=input(str("¿What is the filename WITHOUT extension?: "))
 
          with open(Filename+".csv","r", newline='') as csvfile:
           spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
@@ -104,7 +109,7 @@ if __name__ == '__main__':
          print(users.text)
 
     elif Option == 6:
-         Filename=input(str("¿What is the filename?: "))
+         Filename=input(str("¿What is the filename WITHOUT extension?: "))
 
          with open(Filename+".csv","r", newline='') as csvfile:
           spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
