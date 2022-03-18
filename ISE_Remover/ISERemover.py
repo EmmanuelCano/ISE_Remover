@@ -78,7 +78,7 @@ if __name__ == '__main__':
          sys.stdout = original_stdout
 
     elif Option == 3:
-        filename=str(input('Name of the TXT file (i.e users?): '))
+        filename=str(input('Name of the TXT file (Without Extension) (i.e users?): '))
         samplefile = open(filename+'.txt')
         samplereader = csv.reader(samplefile)
         sampledata = list(samplereader)
@@ -104,7 +104,9 @@ if __name__ == '__main__':
            }
 
            response = requests.request("DELETE", url,headers=headers, verify=False)
-           print(response)
+           print ("Removing NAD: " +device)
+         print ("Devices removed successfully")
+
     elif Option == 5:
          print(users.text)
 
@@ -127,7 +129,8 @@ if __name__ == '__main__':
 
 
            response = requests.request("DELETE", url,headers=headers, verify=False)
-           print(response)
+           print ("Removing User: " +users)
+         print ("Users removed successfully")
 
     elif Option == 7:
           exit()
