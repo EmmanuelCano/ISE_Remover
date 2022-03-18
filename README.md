@@ -10,6 +10,18 @@ This script  performs the following actions:
 5. Get and Print all internal Users in json data format
 6. Remove all internal Users simultaneously based on a CSV file saved on the same folder that this script.
 
+
+# Files in this Repository
+
+The following is a more detailed explanation of the Files:
+
+1. ISERemover.py: Main Script
+2. NADSX.py: Script to Generate 100 TestUsers and Devices
+3. TestNADs: CSV file with 1500 NADs to be imported into ISE
+4. TestUsers: CSV File with 300 Users to be imported into ISE (CiscoLive2022)
+5. GetCodeBased64: Script to get Based64 Credentials using Python library.
+
+
 # Setting up the environment
 
 - Python v.3.8.2 or above must be installed. This must be the only python version in the virtual environment or host OS
@@ -29,11 +41,11 @@ The following is a more detailed explanation of the Global Variables:
 
 1. Clone this repository 
 
-https://github.com/EmmanuelCano/ISE_Remover.git
+   https://github.com/EmmanuelCano/ISE_Remover.git
 
 2. change into directory
 
-cd ISE_Remover
+   cd ISE_Remover
 
 3. Update File_Example_For_NetworkDevices.txt or File_Example_For_Users.txt with the NADs and/or Users names
 
